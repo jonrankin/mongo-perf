@@ -1,8 +1,12 @@
 import { faker } from '@faker-js/faker';
 import dotenv from 'dotenv'
 import { getTimeDifference } from './utils/getTimeDifference';
+import { Db, MongoClient, ObjectId } from 'mongodb';
 
 dotenv.config();
+const uri = process.env.MONGODB_URI || '';
+const dbString = process.env.MONGODB_DB || '';
+const client = new MongoClient(uri);
 
 function logProgress(workerIndex: number, progress: number) {
     console.log(`Worker ${workerIndex}: ${progress}%...`);
@@ -16,7 +20,7 @@ export async function createDocumentChunk(workerIndex: number, numberOfDocuments
             logProgress(workerIndex, Math.round(((i + 1) / numberOfDocuments) * 100));
         }
         documents.push({
-            _id: faker.string.uuid(),
+            _id: faker.string.uuid() as unknown as ObjectId,
             id2: faker.string.uuid(),
             id3: faker.string.uuid(),
             id4: faker.string.uuid(),
@@ -25,6 +29,10 @@ export async function createDocumentChunk(workerIndex: number, numberOfDocuments
             })
         });
     }
+
+    const db = client.db(dbString);
+    const collection = db.collection('your_collection_name');
+    await collection.insertMany(documents);
     return documents
 }
 
