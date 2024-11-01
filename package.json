@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "load": "ts-node-dev src/index.ts"
+    "load": "ts-node-dev src/index.ts",
+    "load:32": "ts-node-dev --max-old-space-size=32768 src/index.ts 32"
   },
   "author": "",
   "license": "ISC",
