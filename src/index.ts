@@ -43,6 +43,7 @@ async function createDocumentChunk(workerIndex: number, numberOfDocuments: numbe
     const batchSize = 10000;
     const db = client.db(dbString);
     const collection = db.collection('data');
+
     for (let batchStart = 0; batchStart < numberOfDocuments; batchStart += batchSize) {
         const documents = [];
         const batchEnd = Math.min(batchStart + batchSize, numberOfDocuments);
@@ -75,6 +76,7 @@ export async function load() {
         await client.connect(); // Connect to MongoDB
 
         const allBatches = Array.from({ length: workerTotal }, (_, i) => i).map(workerIndex => {
+            console.log(`Starting Worker ${workerIndex}...`);
             return createDocumentChunk(workerIndex, documentsPerWorker); // Create and insert document chunks
         });
 
