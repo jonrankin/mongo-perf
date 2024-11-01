@@ -40,7 +40,7 @@ async function logProgress(workerIndex: number, progress: number) {
 
 async function createDocumentChunk(workerIndex: number, numberOfDocuments: number) {
     const logTrigger = numberOfDocuments / 10;
-    const batchSize = Math.ceil(numberOfDocuments / 10);
+    const batchSize = 10000;
     const db = client.db(dbString);
     const collection = db.collection('data');
     for (let batchStart = 0; batchStart < numberOfDocuments; batchStart += batchSize) {
