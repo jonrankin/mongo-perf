@@ -31,7 +31,7 @@ export async function createDocumentChunk(workerIndex: number, numberOfDocuments
     }
 
     const db = client.db(dbString);
-    const collection = db.collection('your_collection_name');
+    const collection = db.collection('data');
     await collection.insertMany(documents);
     return documents
 }
