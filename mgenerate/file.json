@@ -1,0 +1,43 @@
+{
+    "_id": {
+        "$oid":{
+            "$string": {
+                "min": 100,
+                "max": 100,
+                "alpha": true,
+                "numeric": true
+            }
+        }
+    },
+    "id1": {
+        "$string": {
+            "min": 100,
+            "max": 100,
+            "alpha": true, 
+            "numeric": true
+        } 
+    },
+    "id2": {
+        "$string": {
+            "min": 100,
+            "max": 100,
+            "alpha": true, 
+            "numeric": true
+        } 
+    },
+    "id3": {
+        "$string": {
+            "min": 100,
+            "max": 100,
+            "alpha": true, 
+            "numeric": true
+        }
+    },
+    "payload": {
+        "$string": {
+            "length": 3700,
+            "alpha": true,
+            "numeric": true
+        }
+    }
+}

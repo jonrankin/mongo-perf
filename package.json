@@ -1,0 +1,20 @@
+{
+  "name": "cibc-perf-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "load": "ts-node-dev src/index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "mongodb": "^6.8.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "dotenv": "^16.4.5"
+  }
+}
